@@ -4,7 +4,7 @@ import { Profile } from './profile/profile';
 export const App = () => {
   return (
     <div>
-      <Profile userdata={user} />{' '}
+      <Profile userdata={user} />
     </div>
   );
 };
