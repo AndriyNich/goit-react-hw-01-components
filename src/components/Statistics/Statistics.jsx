@@ -9,55 +9,37 @@ import {
 } from './Statistics.styled';
 
 export const Statistics = ({ title, stats }) => {
-  console.log(title);
-  console.dir(stats);
   return (
     <StatisticsStyled>
-      <Title>Upload stats</Title>
+      {title !== 'undefined' && <Title>{title}</Title>}
 
       <StatList>
-        <Item>
-          <Label>.docx</Label>
-          <Percentage>4%</Percentage>
-        </Item>
-        <Item>
-          <Label>.mp3</Label>
-          <Percentage>14%</Percentage>
-        </Item>
-        <Item>
-          <Label>.pdf</Label>
-          <Percentage>41%</Percentage>
-        </Item>
-        <Item>
-          <Label>.mp4</Label>
-          <Percentage>12%</Percentage>
-        </Item>
+        {stats.map(({ id, label, percentage }) => {
+          return (
+            <Item key={id} bgc={getRandomHexColor()}>
+              <Label>{label}</Label>
+              <Percentage>{percentage}%</Percentage>
+            </Item>
+          );
+        })}
       </StatList>
     </StatisticsStyled>
   );
 };
 
-{
-  /* <section class="statistics">
-  <h2 class="title">Upload stats</h2>
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+};
 
-  <ul class="stat-list">
-    <li class="item">
-      <span class="label">.docx</span>
-      <span class="percentage">4%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp3</span>
-      <span class="percentage">14%</span>
-    </li>
-    <li class="item">
-      <span class="label">.pdf</span>
-      <span class="percentage">41%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp4</span>
-      <span class="percentage">12%</span>
-    </li>
-  </ul>
-</section> */
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
