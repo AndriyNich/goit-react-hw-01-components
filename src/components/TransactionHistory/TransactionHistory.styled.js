@@ -36,22 +36,22 @@ export const Tr = styled.tr`
 `;
 
 export const Th = styled.th`
-  padding: 10px 0 10px;
+  padding: 10px 0 10px 0;
+
+  &:not(:last-child) {
+    border-right: 1px solid white;
+  }
 `;
 
-export const TdType = styled.td`
-  padding: 10px 0 10px;
-  padding-left: 15%;
-  text-align: left;
-`;
+export const Td = styled.td`
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-export const TdNumber = styled.td`
-  padding: 10px 0 10px;
-  padding-right: 10%;
-  text-align: right;
-`;
+  padding-left: ${p => (p.align === 'left' ? '15%' : '0')};
+  padding-right: ${p => (p.align === 'right' ? '10%' : '0')};
+  text-align: ${p => p.align};
 
-export const TdCurrency = styled.td`
-  padding: 10px 0 10px;
-  text-align: center;
+  &:not(:last-child) {
+    border-right: 1px solid gray;
+  }
 `;
