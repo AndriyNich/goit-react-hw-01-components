@@ -12,6 +12,7 @@ import {
   Quantity,
 } from './Profile.styled';
 
+//
 export const Profile = ({ userdata }) => {
   const {
     username,
